@@ -80,3 +80,46 @@
     pointer-events: none;
   }
 }
+
+/* Handwriting animation */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap');
+
+.handwriting-svg {
+  overflow: visible;
+}
+
+.handwriting-text {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: handwriting-draw 2s ease-out forwards;
+}
+
+.handwriting-fill {
+  opacity: 0;
+  animation: handwriting-fill-in 0.5s ease-out 1.8s forwards;
+}
+
+@keyframes handwriting-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes handwriting-fill-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .handwriting-text {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  
+  .handwriting-fill {
+    animation: none;
+    opacity: 1;
+  }
+}

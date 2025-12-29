@@ -24,9 +24,47 @@ const HeroSection = () => {
         </div>
 
         {/* Mission */}
-        <p className="max-w-md text-lg md:text-xl text-foreground/80 font-serif italic leading-relaxed mb-8">
-          {siteContent.mission}
+        <p className="max-w-lg text-lg md:text-xl text-foreground/80 font-serif leading-relaxed mb-6">
+          A community for readers, writers, and creatives in KW. We host quiet reading nights, creative workshops, and literary events to bring people together through the magic of words.
         </p>
+
+        {/* Handwritten tagline with animation */}
+        <div className="mb-8">
+          <svg
+            viewBox="0 0 320 50"
+            className="w-72 md:w-80 h-auto handwriting-svg"
+            aria-label="Join us in the margins!"
+          >
+            <text
+              x="50%"
+              y="35"
+              textAnchor="middle"
+              className="handwriting-text"
+              style={{
+                fontFamily: "'Brush Script MT', 'Dancing Script', cursive",
+                fontSize: "32px",
+                fill: "none",
+                stroke: "#E0644E",
+                strokeWidth: "1.5",
+              }}
+            >
+              Join us in the margins!
+            </text>
+            <text
+              x="50%"
+              y="35"
+              textAnchor="middle"
+              className="handwriting-fill"
+              style={{
+                fontFamily: "'Brush Script MT', 'Dancing Script', cursive",
+                fontSize: "32px",
+                fill: "#E0644E",
+              }}
+            >
+              Join us in the margins!
+            </text>
+          </svg>
+        </div>
 
         {/* Social icons */}
         <div className="flex items-center gap-6">

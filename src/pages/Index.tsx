@@ -1,76 +1,50 @@
-import { Link, Music, ShoppingBag, MessageCircle, Calendar } from "lucide-react";
-import ProfileHeader from "@/components/ProfileHeader";
+import { useRef } from "react";
+import { siteContent } from "@/data/siteContent";
+import HeroSection from "@/components/HeroSection";
+import EventsCard from "@/components/EventsCard";
 import LinkCard from "@/components/LinkCard";
-import SocialIcons from "@/components/SocialIcons";
-
-const links = [
-  {
-    icon: Link,
-    title: "My Website",
-    href: "https://example.com",
-  },
-  {
-    icon: Music,
-    title: "Listen on Spotify",
-    href: "https://spotify.com",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Shop Merch",
-    href: "https://shop.example.com",
-  },
-  {
-    icon: MessageCircle,
-    title: "Join Discord",
-    href: "https://discord.gg",
-  },
-  {
-    icon: Calendar,
-    title: "Book a Call",
-    href: "https://calendly.com",
-  },
-];
+import EventsSection from "@/components/EventsSection";
+import SupportSection from "@/components/SupportSection";
 
 const Index = () => {
+  const eventsRef = useRef<HTMLElement>(null);
+
+  const scrollToEvents = () => {
+    eventsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const hasEvents = siteContent.events.length > 0;
+
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background decoration */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-      </div>
+    <div className="min-h-screen bg-background">
+      <main className="container max-w-[700px] mx-auto px-4 py-8 md:py-12">
+        {/* Hero */}
+        <HeroSection />
 
-      {/* Main content */}
-      <main className="relative z-10 mx-auto flex min-h-screen max-w-md flex-col items-center px-6 py-16">
-        <ProfileHeader
-          name="Your Name"
-          bio="Creator, builder, and community enthusiast. Welcome to my corner of the internet ✨"
-        />
+        {/* Main content stack */}
+        <div className="space-y-4 mt-8">
+          {/* Events card - only show if events exist */}
+          {hasEvents && <EventsCard onClick={scrollToEvents} />}
 
-        {/* Links */}
-        <div className="mt-10 flex w-full flex-col gap-4">
-          {links.map((link, index) => (
-            <LinkCard
-              key={link.title}
-              icon={link.icon}
-              title={link.title}
-              href={link.href}
-              delay={300 + index * 100}
-            />
-          ))}
-        </div>
+          {/* Link cards */}
+          <div className="bg-card rounded-lg p-4 md:p-6 border border-border">
+            <div className="space-y-3">
+              {siteContent.links.map((link, index) => (
+                <LinkCard key={index} label={link.label} href={link.href} />
+              ))}
+            </div>
+          </div>
 
-        {/* Social icons */}
-        <div className="mt-10">
-          <SocialIcons />
+          {/* Support section */}
+          <SupportSection />
+
+          {/* Events section */}
+          {hasEvents && <EventsSection ref={eventsRef} />}
         </div>
 
         {/* Footer */}
-        <footer
-          className="animate-fade-up mt-auto pt-12 text-center text-sm text-muted-foreground"
-          style={{ animationDelay: "800ms" }}
-        >
-          <p>Made with 💙</p>
+        <footer className="mt-12 text-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} The Margins Club</p>
         </footer>
       </main>
     </div>

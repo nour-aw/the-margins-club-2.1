@@ -11,23 +11,23 @@ export const siteContent = {
   links: [
     {
       label: "Add Your Book",
-      href: "https://forms.example.com/add-book",
+      href: "https://noteforms.com/forms/what-are-you-reading-efd3ig",
     },
     {
       label: "Bookshelf",
-      href: "https://themarginsclub.com/bookshelf",
+      href: "https://buttered-pipe-997.notion.site/1b674207413580d6b8e5e202a7d11034?v=1b674207413580ca9dae000cb70a4a4d",
     },
     {
       label: "Add Your Book Club Here",
-      href: "https://forms.example.com/add-club",
+      href: "https://noteforms.com/forms/the-margins-club-book-club-directory-hzke2b",
     },
     {
       label: "Book Club Directory",
-      href: "https://themarginsclub.com/directory",
+      href: "https://buttered-pipe-997.notion.site/1b6742074135800b9e15f97e0388f85b?v=1b67420741358063a98a000c8e7a9b96",
     },
     {
       label: "Collaboration Form",
-      href: "https://forms.example.com/collaborate",
+      href: "https://noteforms.com/forms/the-margins-club-collaboration-form-mrzlik",
     },
   ],
 

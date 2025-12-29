@@ -1,5 +1,6 @@
 import { Instagram, Mail } from "lucide-react";
 import { siteContent } from "@/data/siteContent";
+import logo from "@/assets/logo.png";
 
 const HeroSection = () => {
   return (
@@ -13,16 +14,13 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Logo placeholder - replace src with your logo */}
+        {/* Logo */}
         <div className="mb-8">
-          <div className="flex flex-col items-center gap-2">
-            <span className="font-serif text-4xl md:text-5xl font-semibold text-primary tracking-wide">
-              The Margins Club
-            </span>
-            <span className="text-sm text-secondary tracking-[0.3em] uppercase">
-              A Reading Community
-            </span>
-          </div>
+          <img 
+            src={logo} 
+            alt="The Margins Club - Est 2025 - KW Region" 
+            className="w-64 md:w-80 h-auto"
+          />
         </div>
 
         {/* Mission */}

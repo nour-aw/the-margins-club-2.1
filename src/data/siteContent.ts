@@ -42,14 +42,14 @@ export const siteContent = {
       date: "January 15, 2025",
       time: "6:00 PM EST",
       location: "Midnight Run Cafe",
-      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and focused reading.",
+      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
     },
     {
      title: "Quiet Reading Night",
       date: "January 26, 2025",
       time: "6:00 PM EST",
       location: "Midnight Run Cafe",
-      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and focused reading.",
+      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
     },
   ],
 };

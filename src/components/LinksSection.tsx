@@ -11,7 +11,7 @@ const LinksSection = () => {
           The Community Shelf
         </h2>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-          Browse, share, and discover. A collection of resources from the margins.
+          Shared by the community. Browse, contribute, and discover.
         </p>
       </div>
 

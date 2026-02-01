@@ -129,23 +129,31 @@ export const siteContent = {
     },
   },
 
-  // Upcoming events
+  // Upcoming events - UPDATED with real events
   events: [
     {
-      title: "Quiet Reading Night",
-      date: "January 15, 2025",
-      time: "6:00 PM EST",
-      location: "Midnight Run Cafe",
-      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
-      rsvpLink: "https://instagram.com/themarginsclub",
+      title: "Quiet Reading Night with an Antiquarian Book Browse",
+      date: "February 5, 2025",
+      time: "7:00 PM EST",
+      location: "KW Region",
+      description: "A calm evening of silent reading paired with an antiquarian book browse.",
+      rsvpLink: "https://www.eventbrite.ca/e/the-margins-club-quiet-reading-night-antiquarian-book-browse-feb-5th-tickets-1981326136811",
+    },
+    {
+      title: "Journaling and Love Letters Night",
+      date: "February 9, 2025",
+      time: "7:00 PM EST",
+      location: "KW Region",
+      description: "A Valentine's edition journaling and letter writing night.",
+      rsvpLink: "https://www.eventbrite.ca/e/the-margins-club-journallinglove-letters-night-feb-9th-tickets-1981327488855",
     },
     {
       title: "Quiet Reading Night",
-      date: "January 26, 2025",
-      time: "6:00 PM EST",
-      location: "Midnight Run Cafe",
-      description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
-      rsvpLink: "https://instagram.com/themarginsclub",
+      date: "February 19, 2025",
+      time: "7:00 PM EST",
+      location: "KW Region",
+      description: "A low pressure, silent group reading night with optional sharing.",
+      rsvpLink: "https://www.eventbrite.ca/e/the-margins-club-quiet-reading-night-feb-19th-tickets-1981327393570",
     },
   ],
 

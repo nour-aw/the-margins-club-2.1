@@ -1,29 +1,35 @@
 import { siteContent } from "@/data/siteContent";
-import LinkCard from "./LinkCard";
+import BookCoverCard from "./BookCoverCard";
 import { Heart } from "lucide-react";
 
 const LinksSection = () => {
   return (
     <section className="py-16 md:py-24">
+      {/* Section header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground mb-4">
-          Quick Links
+          The Community Shelf
         </h2>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-          Share what you're reading, discover book clubs, and connect with us.
+          Browse, share, and discover. A collection of resources from the margins.
         </p>
       </div>
 
-      <div className="bg-card rounded-lg p-4 md:p-6 border border-border mb-6">
-        <div className="space-y-3">
-          {siteContent.links.map((link, index) => (
-            <LinkCard key={index} label={link.label} href={link.href} />
-          ))}
-        </div>
+      {/* Book covers grid - responsive */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+        {siteContent.shelfLinks.map((link, index) => (
+          <BookCoverCard
+            key={index}
+            title={link.title}
+            subtitle={link.subtitle}
+            helperText={link.helperText}
+            href={link.href}
+          />
+        ))}
       </div>
 
-      {/* Support */}
-      <div className="bg-card rounded-lg p-6 border border-border">
+      {/* Support section */}
+      <div className="bg-card rounded-lg p-6 border border-border max-w-md mx-auto">
         <h3 className="text-lg font-serif font-semibold text-foreground mb-4 flex items-center justify-center gap-2">
           <Heart className="w-4 h-4 text-accent" />
           Support Us

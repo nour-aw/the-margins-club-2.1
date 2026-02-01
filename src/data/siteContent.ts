@@ -31,27 +31,31 @@ export const siteContent = {
     email: "hello@themarginsclub.com",
   },
 
-  // Main navigation links (from bio.site)
-  links: [
+  // Community shelf links (book cover style)
+  shelfLinks: [
     {
-      label: "Add Your Book",
-      href: "https://noteforms.com/forms/what-are-you-reading-efd3ig",
-    },
-    {
-      label: "Bookshelf",
+      title: "Community Bookshelf",
+      subtitle: "What we're reading",
+      helperText: "Browse books →",
       href: "https://buttered-pipe-997.notion.site/1b674207413580d6b8e5e202a7d11034?v=1b674207413580ca9dae000cb70a4a4d",
     },
     {
-      label: "Add Your Book Club Here",
-      href: "https://noteforms.com/forms/the-margins-club-book-club-directory-hzke2b",
+      title: "Add Your Book",
+      subtitle: "Share your current read",
+      helperText: "Add yours →",
+      href: "https://noteforms.com/forms/what-are-you-reading-efd3ig",
     },
     {
-      label: "Book Club Directory",
+      title: "Book Club Directory",
+      subtitle: "Find your people",
+      helperText: "Explore clubs →",
       href: "https://buttered-pipe-997.notion.site/1b6742074135800b9e15f97e0388f85b?v=1b67420741358063a98a000c8e7a9b96",
     },
     {
-      label: "Collaboration Form",
-      href: "https://noteforms.com/forms/the-margins-club-collaboration-form-mrzlik",
+      title: "Add Your Club",
+      subtitle: "List your book club",
+      helperText: "Submit →",
+      href: "https://noteforms.com/forms/the-margins-club-book-club-directory-hzke2b",
     },
   ],
 

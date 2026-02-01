@@ -1,13 +1,37 @@
 // All site content lives here - edit this file to update the site
 
 export const siteContent = {
-  mission: "A community celebrating the joy of reading and the power of shared stories.",
-  
+  // Hero
+  hero: {
+    headline: "A community for readers, writers, and creatives.",
+    description: "We host quiet reading nights, journaling nights, creative workshops, and literary gatherings. Our events are low pressure, intentional, and designed for real connection—not performance.",
+    primaryCta: {
+      label: "View Events",
+      href: "#events",
+    },
+    secondaryCta: {
+      label: "Join the Community",
+      href: "https://instagram.com/themarginsclub",
+    },
+  },
+
+  // Manifesto / Philosophy
+  manifesto: [
+    "The main text tells you how life should go.",
+    "The margins are where you choose for yourself.",
+    "Choose what makes you feel alive.",
+    "Question the narrative.",
+    "Write your own story.",
+    "In the margins.",
+  ],
+
+  // Social links
   social: {
     instagram: "https://instagram.com/themarginsclub",
     email: "hello@themarginsclub.com",
   },
 
+  // Main navigation links (from bio.site)
   links: [
     {
       label: "Add Your Book",
@@ -31,11 +55,77 @@ export const siteContent = {
     },
   ],
 
+  // Support
   support: {
     label: "Buy Us a Coffee (or a Book!)",
     href: "https://buymeacoffee.com/themarginsclub",
   },
 
+  // Event types
+  eventTypes: [
+    {
+      title: "Quiet Reading Nights",
+      description: "Bring your own book. Read in the company of others. No discussion required.",
+    },
+    {
+      title: "Journaling Nights",
+      description: "Prompts, stillness, and space to reflect. Write for yourself, not an audience.",
+    },
+    {
+      title: "Creative Workshops",
+      description: "Hands-on sessions exploring writing, zines, poetry, and other creative forms.",
+    },
+    {
+      title: "Pop-ups & Collaborations",
+      description: "Special events with cafés, bookshops, libraries, and cultural partners.",
+    },
+  ],
+
+  // How events work
+  howItWorks: [
+    {
+      step: "Arrival & settling in",
+      description: "Find a seat, get comfortable, order a drink if you'd like.",
+    },
+    {
+      step: "Reading or writing time",
+      description: "The main event. Quiet, focused, shared stillness.",
+    },
+    {
+      step: "Optional sharing",
+      description: "Share what you're reading or writing—only if you want to.",
+    },
+    {
+      step: "Phones away",
+      description: "We encourage disconnecting for the duration.",
+    },
+    {
+      step: "Clear start & end",
+      description: "Events have defined times. No awkward lingering.",
+    },
+  ],
+
+  // Community section
+  community: {
+    headline: "Who this is for",
+    description: "People who value calm over chaos. Ideas over small talk. Presence over performance. If you crave intentional connection and quiet spaces to think, you belong here.",
+    cta: {
+      label: "Follow on Instagram",
+      href: "https://instagram.com/themarginsclub",
+    },
+  },
+
+  // Collaborate section
+  collaborate: {
+    headline: "Partner with us",
+    description: "We work with cafés, libraries, bookshops, cultural organizations, and brands who share our values. Paid programming available for private events, corporate wellness, and community partnerships.",
+    cta: {
+      label: "Get in Touch",
+      href: "https://noteforms.com/forms/the-margins-club-collaboration-form-mrzlik",
+    },
+  },
+
+  // Upcoming events
   events: [
     {
       title: "Quiet Reading Night",
@@ -43,15 +133,28 @@ export const siteContent = {
       time: "6:00 PM EST",
       location: "Midnight Run Cafe",
       description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
+      rsvpLink: "https://instagram.com/themarginsclub",
     },
     {
-     title: "Quiet Reading Night",
+      title: "Quiet Reading Night",
       date: "January 26, 2025",
       time: "6:00 PM EST",
       location: "Midnight Run Cafe",
       description: "Bring your own book and read quietly alongside others. A simple evening of shared stillness and reading.",
+      rsvpLink: "https://instagram.com/themarginsclub",
     },
   ],
+
+  // Footer
+  footer: {
+    mission: "Rethinking how we gather. One quiet night at a time.",
+    location: "KW and beyond",
+    navLinks: [
+      { label: "Events", href: "#events" },
+      { label: "About", href: "#manifesto" },
+      { label: "Contact", href: "mailto:hello@themarginsclub.com" },
+    ],
+  },
 };
 
 export type SiteContent = typeof siteContent;

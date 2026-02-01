@@ -1,51 +1,43 @@
-import { useRef } from "react";
-import { siteContent } from "@/data/siteContent";
 import HeroSection from "@/components/HeroSection";
-import EventsCard from "@/components/EventsCard";
-import LinkCard from "@/components/LinkCard";
+import ManifestoSection from "@/components/ManifestoSection";
 import EventsSection from "@/components/EventsSection";
-import SupportSection from "@/components/SupportSection";
+import EventTypesSection from "@/components/EventTypesSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import CommunitySection from "@/components/CommunitySection";
+import CollaborateSection from "@/components/CollaborateSection";
+import LinksSection from "@/components/LinksSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
-  const eventsRef = useRef<HTMLElement>(null);
-
-  const scrollToEvents = () => {
-    eventsRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const hasEvents = siteContent.events.length > 0;
-
   return (
     <div className="min-h-screen bg-background">
-      <main className="container max-w-[700px] mx-auto px-4 py-8 md:py-12">
+      <main className="container max-w-[800px] mx-auto px-4">
         {/* Hero */}
         <HeroSection />
 
-        {/* Main content stack */}
-        <div className="space-y-4 mt-8">
-          {/* Events card - only show if events exist */}
-          {hasEvents && <EventsCard onClick={scrollToEvents} />}
+        {/* Manifesto / Philosophy */}
+        <ManifestoSection />
 
-          {/* Link cards */}
-          <div className="bg-card rounded-lg p-4 md:p-6 border border-border">
-            <div className="space-y-3">
-              {siteContent.links.map((link, index) => (
-                <LinkCard key={index} label={link.label} href={link.href} />
-              ))}
-            </div>
-          </div>
+        {/* Upcoming Events */}
+        <EventsSection />
 
-          {/* Support section */}
-          <SupportSection />
+        {/* Event Types */}
+        <EventTypesSection />
 
-          {/* Events section */}
-          {hasEvents && <EventsSection ref={eventsRef} />}
-        </div>
+        {/* How It Works */}
+        <HowItWorksSection />
+
+        {/* Community */}
+        <CommunitySection />
+
+        {/* Collaborate */}
+        <CollaborateSection />
+
+        {/* Quick Links (from bio.site) */}
+        <LinksSection />
 
         {/* Footer */}
-        <footer className="mt-12 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} The Margins Club</p>
-        </footer>
+        <Footer />
       </main>
     </div>
   );

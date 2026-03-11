@@ -11,15 +11,23 @@ Deno.serve(async (req) => {
   }
 
   try {
-    // Use Eventbrite's public-facing API endpoint for organizer events
-    const url = `https://www.eventbrite.ca/api/v3/destination/organizers/${ORGANIZER_ID}/events/?page_size=20&time_filter=current_future`;
+    const apiToken = Deno.env.get('EVENTBRITE_API_TOKEN');
+    if (!apiToken) {
+      console.error('EVENTBRITE_API_TOKEN not configured');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Eventbrite API token not configured', events: [] }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
-    console.log('Fetching events from Eventbrite:', url);
+    const url = `https://www.eventbriteapi.com/v3/organizations/${ORGANIZER_ID}/events/?status=live&order_by=start_asc&expand=venue,logo`;
+
+    console.log('Fetching events from Eventbrite API');
 
     const response = await fetch(url, {
       headers: {
+        'Authorization': `Bearer ${apiToken}`,
         'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (compatible)',
       },
     });
 
@@ -27,63 +35,56 @@ Deno.serve(async (req) => {
       const text = await response.text();
       console.error(`Eventbrite API error [${response.status}]:`, text);
       return new Response(
-        JSON.stringify({ success: false, error: `Eventbrite returned ${response.status}`, events: [] }),
+        JSON.stringify({ success: false, error: `Eventbrite API returned ${response.status}`, events: [] }),
         { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     const data = await response.json();
-    console.log('Eventbrite raw response keys:', Object.keys(data));
-
-    // Parse the response - Eventbrite's destination API returns events in data.events
-    const rawEvents = data.events || data.data?.events || [];
-    console.log(`Found ${rawEvents.length} events`);
+    const rawEvents = data.events || [];
+    console.log(`Found ${rawEvents.length} live events`);
 
     const events = rawEvents.map((event: any) => {
-      const startDate = event.start_date || event.primary_venue_start_date || '';
-      const startTime = event.start_time || '';
-      const venueName = event.primary_venue?.name || event.venue?.name || event.primary_venue?.address?.city || 'KW Region';
-      const imageUrl = event.image?.url || event.logo?.url || null;
-
-      // Build the Eventbrite event URL
+      const startUtc = event.start?.utc || event.start?.local || '';
+      const venueName = event.venue?.name || event.venue?.address?.city || 'KW Region';
+      const imageUrl = event.logo?.original?.url || event.logo?.url || null;
       const eventUrl = event.url || `https://www.eventbrite.ca/e/${event.id}`;
 
-      // Format date nicely
-      let formattedDate = startDate;
-      if (startDate) {
+      let formattedDate = '';
+      let formattedTime = '';
+
+      if (startUtc) {
         try {
-          const d = new Date(startDate + (startTime ? `T${startTime}` : ''));
+          const d = new Date(event.start?.local || startUtc);
           formattedDate = d.toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           });
-        } catch { /* keep raw */ }
+          formattedTime = d.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+          });
+        } catch {
+          formattedDate = startUtc;
+        }
       }
 
-      let formattedTime = startTime;
-      if (startTime) {
-        try {
-          const [h, m] = startTime.split(':');
-          const d = new Date();
-          d.setHours(parseInt(h), parseInt(m));
-          formattedTime = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-        } catch { /* keep raw */ }
-      }
+      // Strip HTML tags from description
+      const rawDesc = event.description?.text || event.summary || '';
+      const description = rawDesc.substring(0, 200) + (rawDesc.length > 200 ? '…' : '');
 
       return {
-        title: event.name || event.title || 'Untitled Event',
+        title: event.name?.text || event.name || 'Untitled Event',
         date: formattedDate,
         time: formattedTime,
         location: venueName,
-        description: event.summary || event.description?.text?.substring(0, 200) || '',
+        description,
         rsvpLink: eventUrl,
         imageUrl,
       };
     });
-
-    console.log('Parsed events:', events.length);
 
     return new Response(
       JSON.stringify({ success: true, events }),
